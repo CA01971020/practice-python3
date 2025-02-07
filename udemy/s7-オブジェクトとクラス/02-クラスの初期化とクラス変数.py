@@ -14,7 +14,13 @@ class Person(object):
     def run(self,num):
         print("num"*num)
 
-
+    # デストラクタ
+    def __del__(self):
+        print("good bye")
 
 person = Person("Mike")
 person.say_something()
+
+del person
+
+print("#########")
