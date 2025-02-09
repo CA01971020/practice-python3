@@ -15,7 +15,13 @@ class TesCar(Car):
     def __init__(self, model="Model S",enable_auto_run=False):
         # 親を呼び出す
         super().__init__(model)
-        self.enable_auto_run = enable_auto_run
+        self._enable_auto_run = enable_auto_run
+
+    # 書き換えができないようにする
+    @property
+    def enable_auto_run(self):
+        return self._enable_auto_run
+
     ## 親のクラスを上書きできる
     def run(self):
         print("super fast")
@@ -31,6 +37,8 @@ print(toyo_car.model)
 toyo_car.run()
 print("#########")
 tes_Car = TesCar("Model S")
+# 書き換えはできないためエラー
+# tes_Car.enable_auto_run = True
 print(tes_Car.model)
 tes_Car.run()
 tes_Car.auto_run()
